@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app="App">
+<head>
+    <meta charset="UTF-8">
+    <title>北斗华创</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <meta name="keywords" content="智慧养老 北斗华创 线上社区 线下社区 服务到门" />
+    <link rel="shortcut icon" href="img/logo.png" />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/head.css">
+    <link rel="stylesheet" href="css/server.css">
+    <link rel="stylesheet" href="css/worklist.css">
+    <link rel="stylesheet" href="css/orderSetting.css">
+    <link rel="stylesheet" href="css/healthDetection.css">
+    <link rel="stylesheet" href="css/orderService.css">
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="angular/angular.min.js"></script>
+    <script type="text/javascript" src="angular/angular-ui-router.js"></script>
+    <script type="text/javascript" src="js/echarts.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/route.js"></script>
+    <script type="text/javascript" src="js/jedate/jedate.js"></script>
+</head>
+<body>
+    <header id="container_z">
+        <div class="header_wrap">
+            <ul class="head-logo">
+                <h1 class="logo">北斗华创</h1>
+                <li class="logo-line"></li>
+                <li class="logo-text">社区养老管理系统</li>
+            </ul>
+            <div class="head-loging">
+                <span class="head-loging-text">欢迎使用养老社区平台</span>
+                <ul class="head-loging-group">
+                    <li class="message"><i class="message_icon"></i></li>
+                    <span class="lineOne"></span>
+                    <li class="user">用户甲<i class="user_icon"></i></li>
+                    <span class="lineTwo"></span>
+                    <li class="logout"><i class="logout_icon"></i>退出</li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="find_nav">
+            <div class="find_nav_list">
+                <ul>
+                    <li><a ui-sref="desk">首页</a></li>
+                    <li><a ui-sref="server">会员信息</a></li>
+                    <li><a ui-sref="member">志工专区</a></li>
+                    <li><a ui-sref="datamanage">案家服务</a></li>
+                    <li><a ui-sref="company">居家照顾</a></li>
+                    <li><a ui-sref="system">亲情服务</a></li>
+                    <li class="sideline"></li>
+                </ul>
+            </div>
+        </div>
+        <div ui-view class="main_body"></div>
+    </main>
+</body>
+<script>
+    $(function(){
+        //初始化导航栏的下划线
+        $(".sideline").css({left:$(".find_nav_list li").eq(0).position().left});
+        $(".find_nav_list li a").eq(0).addClass("active");
+       // console.log($(".find_nav_list li a").eq(0));
+        //点击导航栏菜单移动效果
+            $(".find_nav_list li a").on('click', function(){
+            $(".sideline").animate({left:$(this).position().left},300);
+            $(this).addClass("active").parent().siblings().find("a").removeClass("active");
+        });
+    });
+</script>
+<script type="text/javascript" src="js/controller/serverController.js"></script>
+<script type="text/javascript" src="js/controller/deskController.js"></script>
+<script type="text/javascript" src="js/controller/memberController.js"></script>
+<script type="text/javascript" src="js/controller/datamanageController.js"></script>
+<script type="text/javascript" src="js/controller/companyController.js"></script>
+<script type="text/javascript" src="js/controller/systemController.js"></script>
+<script type="text/javascript" src="js/server/server_w.js"></script>
+<script type="text/javascript" src="js/area.js"></script>
+<script type="text/javascript" src="js/controller/serverController/worklistController.js"></script>
+</html>

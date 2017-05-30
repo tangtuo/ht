@@ -1,0 +1,69 @@
+/**
+ * Created by z324_ on 2017/4/27.
+ */
+angular.module("App").controller("deskController",["$scope",function($scope){
+        $scope.fun = function(){
+            console.log("1111");
+        };
+    //初始化
+    var myChart = echarts.init(document.getElementById("main"));
+    // 指定图表的配置项和数据
+    var option = {
+        title:{
+            show:true,
+            text:"Echarts入门示例",//标题
+            subtext:"学习使我快乐",//副标题
+            left:100//数字就是像素值，也可以是center left right这种
+            //borderColor:"red",
+            //borderWidth:5
+        },
+        //工具
+        toolbox:{
+            show:true,
+            feature:{
+                dataView:{//数据视图
+                    show:true
+                },
+                restore:{//恢复
+                    show:true
+                },
+                dataZoom:{//放大、缩小区域
+                    show:true
+                },
+                saveAsImage:{//保存图片
+                    show:true
+                },
+                magicType:{//改变状态
+                    type:["line","bar"]
+                }
+            }
+        },
+        tooltip:{//提示框
+            trigger:"axis"
+        },
+        legend:{//图例
+            data:["销量"]
+        },
+        xAxis:{
+            data:["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+        },
+        yAxis:{},
+        series:[{//数据
+            name:"销量",
+            type:"bar",
+            data:[5,20,36,10,10,20],
+            markPoint:{
+                data:[
+                    {type:"max",name:"最大值"},
+                    {type:"min",name:"最小值"}
+                ]
+            },
+            markLine:{
+                data:[
+                    {type:"average",name:"平均值"}
+                ]
+            }
+        }]
+    };
+    myChart.setOption(option);
+    }]);

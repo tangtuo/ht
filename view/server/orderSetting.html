@@ -1,0 +1,86 @@
+<div id="ordersetting">
+    <div class="ordersetting_top">
+        <span>工单列表</span>
+        <span>< 返回列表首页</span>
+    </div>
+    <div class="custom_info">
+        <div>申请人信息</div>
+        <div class="custom_info_1">
+            <span class="color_red">*</span><label for="orderproposer"><p>申请人</p></label>:<input type="text" id="orderproposer" />
+            <span class="color_red">*</span><label for="orderproposertel"><p>联系方式</p></label>:<input type="text" id="orderproposertel" />
+        </div>
+        <div class="custom_info_2">
+            <span class="color_red">*</span><p>工单来源</p>: <span class="ordermethod">电话</span>
+            <p>从历史工单重复下单</p>
+        </div>
+    </div>
+    <div class="service_info">
+        <div>
+            <span>服务对象信息</span>
+            <span>服务对象为申请人</span>
+        </div>
+        <div class="service_info_1">
+            <span class="color_red">*</span><label for="ordercustomer"><p>服务对象姓名</p></label>:<input type="text" id="ordercustomer"/>
+            <span class="color_red">*</span><label for="ordercustomertel"><p>联系方式</p></label>:<input type="text" id="ordercustomertel"/>
+        </div>
+        <div class="service_info_2">
+            <span class="color_red">*</span><p>服务地址</p>:
+            <!--//三级联动 id name补全就可以调用-->
+            <select id="s_province" name="s_province"></select>  
+            <select id="s_city" name="s_city" ></select>  
+            <select id="s_county" name="s_county"></select>
+        </div>
+        <!--//初始化三级联动-->
+        <script type="text/javascript">_init_area();</script>
+    </div>
+    <div class="server_info">
+        <div>服务信息</div>
+        <div class="server_info_1">
+            <span class="color_red">*</span><p>服务类型</p>:  <p>选择</p>
+        </div>
+        <div class="server_info_2">
+            <span class="color_red">*</span><p>预约服务时间</p>: <input type="text" id="ordertime_w">
+            <script>
+                jeDate({
+                    dateCell:"#ordertime_w",
+                    format:"YYYY年MM月DD日",
+                    isinitVal:true,
+                    isTime:true, //isClear:false,
+//                    okfun:function(val){alert(val)}
+                })
+//                dateCell:"#id", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+//                    format:"YYYY-MM-DD hh:mm:ss", //日期格式
+//                    minDate:"1900-01-01 00:00:00", //最小日期
+//                    maxDate:"2099-12-31 23:59:59", //最大日期
+//                    isinitVal:false, //是否初始化时间
+//                    isTime:false, //是否开启时间选择
+//                    isClear:true, //是否显示清空
+//                    festival:false, //是否显示节日
+//                    zIndex:999,  //弹出层的层级高度
+//                    marks:null, //给日期做标注
+//                    choosefun:function(val) {},  //选中日期后的回调
+//                clearfun:function(val) {},   //清除日期后的回调
+//                okfun:function(val) {}       //点击确定后的回调
+            </script>
+        </div>
+        <div class="server_info_3">
+            <span class="color_red">*</span><p>预约服务费用</p>: <p><span>xxx</span>元</p>
+            <span class="color_red">*</span><p>支付方式</p>:
+            <select name="" id="orderselect">
+                <option value="weixin">微信</option>
+                <option value="zhifubao">支付宝</option>
+                <option value="cash">现金</option>
+                <option value="card">刷卡</option>
+            </select>
+        </div>
+        <div class="server_info_4">
+            <p>备注:</p>
+            <textarea name=""  cols="60" rows="10"></textarea>
+            <p>还可以输入<span>255</span>字</p>
+        </div>
+    </div>
+    <div class="ordersubmit">
+        <input type="button" value="确认并发布">
+        <input type="button" value="取消">
+    </div>
+</div>

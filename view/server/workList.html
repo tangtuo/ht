@@ -1,0 +1,106 @@
+<div class="orderlist_wrap">
+    <div class="orderlist_header">
+        <span class="orderlist_header_text">{{ orderList }}</span>
+    </div>
+    <ul class="orderlist_tools">
+        <li class="orderlist_selectDown">
+            <div class="select_header" ng-model="selectHeade">{{ all }}</div>
+            <button class="glyphicon glyphicon-menu-down" ng-click="selectShow()"></button>
+            <ul class="select_body">
+                <li ng-repeat="selectName in selectNames" ng-click="selectActive()">{{ selectName }}</li>
+            </ul>
+        </li>
+        <li class="orderlist_serchGroup">
+            <form action="" class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="请输入需要查询的会员姓名">
+                </div>
+                <button type="submit" class="btn btn-default">{{ serch }}</button>
+            </form>
+        </li>
+        <li class="orderlist_orderTools">
+            <span class="plus_icon"></span>
+            <span class="add_order">{{ newOrder }}</span>
+            <span class="replace_icon"></span>
+            <span class="replace">{{ reload }}</span>
+        </li>
+    </ul>
+    <!--表格主体-->
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td ng-repeat="item in items | limitTo:12">{{ item.name }}</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in items | paging:currentPage*listsPerPage | limitTo:listsPerPage">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.sperson }}</td>
+                    <td>{{ item.sphone }}</td>
+                    <td>{{ item.serverPerson }}</td>
+                    <td>{{ item.serverPhone }}</td>
+                    <td>{{ item.serverContent }}</td>
+                    <td>{{ item.orderMoney }}</td>
+                    <td>{{ item.orderTime }}</td>
+                    <td>{{ item.serverTime }}</td>
+                    <td>{{ item.orderStatu }}</td>
+                    <td>{{ item.pay }}</td>
+                    <td>
+                        <span class="change">{{ change }}</span>
+                        <span class="cancel">{{ cancel }}</span>
+                        <span class="orders" ng-click="addOrder($event)">{{ orders }}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--接单弹出框-->
+    <div class="modal fade" id="mymodal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title">接单确认</h4>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li class="modal-body-list">
+                            <div class="modal-body-left"><span>订单编号</span><span>:</span></div>
+                            <div class="modal-body-right">{{ itemId }}</div>
+                        </li>
+                        <li class="modal-body-list">
+                            <div class="modal-body-left"><span>被服务人</span><span>:</span></div>
+                            <div class="modal-body-right">{{ itemServerPerson }}</div>
+                        </li>
+                        <li class="modal-body-list">
+                            <div class="modal-body-left"><span>服务人</span><span>:</span></div>
+                            <div class="modal-body-right">{{ itemUser }}</div>
+                        </li>
+                        <li class="modal-body-list">
+                            <div class="modal-body-left"><span>服务内容</span><span>:</span></div>
+                            <div class="modal-body-right">{{ itemServerContent }}</div>
+                        </li>
+                        <li class="modal-body-list">
+                            <div class="modal-body-left"><span>费用</span><span>:</span></div>
+                            <div class="modal-body-right">{{ itemServerMoney }}</div>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--分页-->
+    <div class="orderList_footer">
+        <a class="steps prevLink" ng-click="prevPage()">上一页</a>
+        <a ng-class="{true:'currentStep',false:'step'}[num==currentPage]" ng-repeat="num in pageNum" ng-click="setPage(num)">{{num+1}}</a>
+        <a class="steps nextLink link" ng-click="nextPage()">下一页</a>
+    </div>
+</div>
